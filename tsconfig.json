@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es6", "dom", "es2017"],
+    "allowJs": true,
+    "declaration": true,
+    "outDir": "lib",
+    "rootDirs": ["src"],
+    "sourceMap": true,
+    "jsx": "react",
+    "isolatedModules": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": false,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "dist", "lib", "src/demo"]
+}
