@@ -1,5 +1,5 @@
 import { rst } from 'rt-state';
-import React from 'react';
+import * as React from 'react';
 import { Grid, Paper, Typography, Hidden } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
