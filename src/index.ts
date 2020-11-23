@@ -1,2 +1,1 @@
-export * from './commons';
-export * from './mui-form';
+export * from './mui-table';

@@ -35,18 +35,13 @@
     "@date-io/date-fns": "1.3.13",
     "@material-ui/core": "4.11.0",
     "@material-ui/icons": "4.9.1",
-    "@material-ui/lab": "4.0.0-alpha.56",
-    "@material-ui/pickers": "3.2.10",
     "@material-ui/styles": "4.10.0",
     "date-fns": "2.16.1",
     "i18next": "19.7.0",
     "lodash": "4.17.20",
-    "material-ui-chip-input": "1.1.0",
-    "material-ui-popup-state": "1.6.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "rt-state": "0.1.21",
-    "validate.js": "0.13.1"
+    "rt-state": "0.1.21"
   },
   "devDependencies": {
     "@types/lodash": "4.14.162",

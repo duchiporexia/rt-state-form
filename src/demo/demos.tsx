@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { rst } from 'rt-state';
-import { FormSearchCard } from './SearchCardDemo';
+import { XTableDemo } from './TableDemo';
 
 export const ReactiveDemo = rst.create((ctx) => {
     return () => {
         return (
             <div>
-                <FormSearchCard />
+                <XTableDemo />
                 <br />
             </div>
         );
