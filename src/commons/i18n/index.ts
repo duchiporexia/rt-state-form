@@ -1,4 +1,4 @@
 import { transError, TR } from './TR';
-import { tl, xFormSetLanguage, xFormGetLanguage, xFormInitLanguage } from './common';
+import { xFormResources } from './resources';
 
-export { tl, transError, TR, xFormSetLanguage, xFormGetLanguage, xFormInitLanguage };
+export { transError, TR, xFormResources };

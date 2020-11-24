@@ -1,5 +1,5 @@
 import { rst, State, StateS, unstable_disableDelay } from 'rt-state';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import {
     DataType,
     FieldType,
@@ -10,7 +10,6 @@ import {
     XFormConfig,
 } from './common';
 import { ErrorsType, ValidateType, Validator } from '../validator';
-import { xFormInitLanguage } from '../i18n';
 
 export function createXForm<Values extends FormValues = FormValues>(config: XFormConfig<Values>) {
     return new XForm(config);
@@ -65,11 +64,6 @@ export class XForm<Values extends FormValues = FormValues> {
         this._dirty = rst.stateS<boolean>(false);
         this._validate = config.validate;
         this._onSubmit = config.onSubmit;
-        this.initI18n();
-    }
-
-    private initI18n() {
-        xFormInitLanguage({}).then();
     }
 
     setValidate = (validate: ValidateType<Values>) => {

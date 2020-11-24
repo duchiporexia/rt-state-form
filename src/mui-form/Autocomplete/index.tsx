@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import Autocomplete, { AutocompleteProps } from '@material-ui/lab/Autocomplete';
 import { rst } from 'rt-state';
@@ -7,7 +7,7 @@ import { nameToLabel, transError } from '../../commons';
 import { transLabel } from '../../commons/i18n/TR';
 
 export type XAutocompleteProps = {
-    label?: string;
+    label?: ReactNode;
     options: Array<SelectOptionsType>;
     textFieldProps?: {
         required?: boolean;

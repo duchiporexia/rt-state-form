@@ -3,12 +3,9 @@ import * as React from 'react';
 import { Grid, Paper, Typography, Hidden } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import { clsx } from '../commons';
+import { clsx, number } from '../commons';
 import { countries, skills } from './data';
 import {
-    xFormSetLanguage,
-    xFormGetLanguage,
-    xFormInitLanguage,
     string,
     object,
     createXForm,
@@ -18,10 +15,12 @@ import {
     XSelect,
     XKeyboardTimePicker,
 } from '../';
+import i18n from 'i18next';
 
 const initialValues = {
     username: '',
     gender: 'Female',
+    age: '',
     country: null,
     skills: [
         {
@@ -37,25 +36,13 @@ const delay = (ms: number) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-const resources = {
-    zh: {
-        translation: {
-            'Username is required{{x}}': '必填用户名{{x}}',
-            'Country is required': '国家是必填的',
-            Username: '用户名',
-            Gender: '性别',
-        },
-    },
-};
-
-xFormInitLanguage({ resources, lng: 'zh' }).then();
-
 export const FormSearchCard = rst.create<{}>((ctx) => {
     const form = createXForm({
         initialValues,
         validate: {
-            username: string().required('Username is required{{x}}', { x: 'good' }),
+            username: string().min(3).max(5).required('Username is required{{x}}', { x: 'good' }),
             gender: string().required('Gender selection is required'),
+            age: number().required().min(18, 'Not an adult'),
             country: object()
                 .required('Country is required')
                 .check((value) => {
@@ -63,6 +50,7 @@ export const FormSearchCard = rst.create<{}>((ctx) => {
                         return "Can't be AX";
                     }
                 }),
+            skills: string(true).required(),
             birthdate: object().required(),
         },
         onSubmit,
@@ -95,6 +83,7 @@ export const FormSearchCard = rst.create<{}>((ctx) => {
         window.alert(`
           Username: ${values.username}
           Gender: ${values.gender}
+          Age: ${values.age}
           Country: ${values.country?.label}
           Skills: ${values.skills.map((v) => v.label).join(', ')}
           Birth date: ${values.birthdate}
@@ -108,13 +97,13 @@ export const FormSearchCard = rst.create<{}>((ctx) => {
                 <div>
                     <Button
                         onClick={() => {
-                            const lng = xFormGetLanguage();
-                            if (lng === 'en') {
-                                xFormSetLanguage('zh');
-                                console.log('current lan:', 'zh');
+                            if (!i18n.isInitialized) {
+                                return;
+                            }
+                            if (i18n.language === 'en') {
+                                i18n.changeLanguage('zh').then();
                             } else {
-                                xFormSetLanguage('en');
-                                console.log('current lan:', 'en');
+                                i18n.changeLanguage('en').then();
                             }
                         }}>
                         change Language
@@ -145,6 +134,9 @@ export const FormSearchCard = rst.create<{}>((ctx) => {
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={3}>
                                     <XSelect name="gender" form={form} />
+                                </Grid>
+                                <Grid item xs={12} sm={6} md={3}>
+                                    <XTextField name="age" form={form} type={'number'} />
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={3}>
                                     <XAutocomplete form={form} name="country" />

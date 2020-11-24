@@ -9,16 +9,6 @@ export class NumberValidator extends ObjectValidator {
         super(isArray);
     }
 
-    required = (msg?: string, options?: any) => {
-        return this.addFunc((value: any, field: string) => {
-            if (typeof value !== 'number') {
-                return {
-                    msg: msg ?? 'Required',
-                    options: { field, ...options },
-                };
-            }
-        });
-    };
     min = (min: number, msg?: string, options?: any) => {
         return this.addFunc((value: any, field: string) => {
             if (value < min) {

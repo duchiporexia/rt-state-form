@@ -28,9 +28,9 @@
   "author": "xvv",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/duchiporexia/rt-state/issues"
+    "url": "https://github.com/duchiporexia/rt-state-form/issues"
   },
-  "homepage": "https://github.com/duchiporexia/rt-state#readme",
+  "homepage": "https://github.com/duchiporexia/rt-state-form#readme",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -40,9 +40,10 @@
     "@date-io/date-fns": "^1.3.13",
     "date-fns": "^2.16.1",
     "i18next": "^19.7.0",
+    "react-i18next": "^11.7.3",
     "lodash": "^4.17.20",
-    "material-ui-chip-input": "^1.1.0",
-    "material-ui-popup-state": "^1.6.1",
+    "material-ui-chip-input": "1.1.0",
+    "material-ui-popup-state": "1.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "rt-state": "0.1.21",

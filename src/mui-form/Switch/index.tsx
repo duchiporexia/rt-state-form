@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Switch, { SwitchProps } from '@material-ui/core/Switch';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -10,7 +10,7 @@ import { Typography } from '@material-ui/core';
 import { transLabel } from '../../commons/i18n/TR';
 
 export type XSwitchProps = {
-    label?: string;
+    label?: ReactNode;
     disabled?: boolean;
     fullWidth?: boolean;
     margin?: 'none' | 'dense' | 'normal';

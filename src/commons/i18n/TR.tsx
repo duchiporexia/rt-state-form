@@ -1,10 +1,15 @@
 import React from 'react';
 import { rst } from 'rt-state';
-import { i18n } from './common';
+import { i18nDefaultState } from './common';
 import { ErrorType } from '../validator';
+import { useTranslation } from 'react-i18next';
 
 export const TR = rst.createS<{ name: string; options?: any }>((props) => {
-    return i18n.value.t(props.name, props.options);
+    const { t, ready } = useTranslation();
+    if (ready) {
+        return t(props.name, props.options);
+    }
+    return i18nDefaultState.inst.t(props.name, props.options);
 });
 
 export function transLabel(label: any) {

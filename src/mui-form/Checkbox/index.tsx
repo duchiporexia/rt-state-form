@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -11,7 +11,7 @@ import { Typography } from '@material-ui/core';
 import { transLabel } from '../../commons/i18n/TR';
 
 export type XCheckboxProps<Values extends FormValues = FormValues> = {
-    label?: string;
+    label?: ReactNode;
     disabled?: boolean;
     fullWidth?: boolean;
     margin?: 'none' | 'dense' | 'normal';

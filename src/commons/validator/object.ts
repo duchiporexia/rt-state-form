@@ -1,5 +1,4 @@
 import { ErrorType, Validator } from './common';
-import { isInvalidDate } from '../date';
 
 export function object(isArray?: boolean) {
     return new ObjectValidator(isArray);
@@ -11,27 +10,13 @@ export class ObjectValidator extends Validator {
     }
 
     required = (msg?: string, options?: any) => {
-        return this.addFunc((value: any, field: string) => {
-            let hasError = false;
-            if (value == null) {
-                hasError = true;
-            }
-            if (!hasError && isInvalidDate(value)) {
-                hasError = true;
-            }
-            if (hasError) {
-                return {
-                    msg: msg ?? 'Required',
-                    options: { field, ...options },
-                };
-            }
-            return undefined;
-        });
+        this.requiredOption.required = true;
+        this.requiredOption.msg = msg ?? this.requiredOption.msg;
+        this.requiredOption.options = options ?? this.requiredOption.options;
+        return this;
     };
 
     check = (cb: (value: any, field: string, values: any) => ErrorType) => {
-        return this.addFunc((value: any, field: string, values: any) => {
-            return cb(value, field, values);
-        });
+        return this.addFunc(cb);
     };
 }

@@ -10,17 +10,6 @@ export class StringValidator extends ObjectValidator {
         super(isArray);
     }
 
-    required = (msg?: string, options?: any) => {
-        return this.addFunc((value: any, field: string) => {
-            if (value && typeof value === 'string') {
-                return undefined;
-            }
-            return {
-                msg: msg ?? 'Required',
-                options: { field, ...options },
-            };
-        });
-    };
     min = (min: number, msg?: string, options?: any) => {
         return this.addFunc((value: any, field: string) => {
             if (value.length < min) {
